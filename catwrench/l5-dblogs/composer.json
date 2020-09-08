@@ -1,0 +1,25 @@
+{
+    "name": "catwrench/l5-dblogs",
+    "description": "a laravel package for db logs",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "CatWrench\\DbLogs\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CatWrench\\DbLogs\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CatWrench\\DbLogs\\LogProvider"
+            ]
+        },
+        "class": "CatWrench\\DbLogs"
+    }
+}
