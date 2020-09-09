@@ -30,6 +30,7 @@ class L5DbLogs extends Migration
             $table->string('operator', 64)->comment('操作人')->index('idx_operator');
             $table->string('track_key', 64)->comment('追踪标签')->index('idx_track');
             $table->json('log_content')->comment('日志内容');
+            $table->string('log_summary', 200)->comment('摘要');
             $table->dateTime('created_at')->comment('创建时间format:yyyy-mm-dd HH:ii:ss');
             $table->dateTime('created_date')->comment('创建日期format:yyy-mm-dd')->index('idx_date');
         });

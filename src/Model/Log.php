@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $track_key
  * @property string $operator
  * @property string $log_content
+ * @property string $log_summary
  * @property string $created_at
  * @property string $created_date
  */
@@ -25,6 +26,7 @@ class Log extends Model
         'track_key',
         'operator',
         'log_content',
+        'log_summary',
         'created_at',
         'created_date',
     ];
@@ -34,6 +36,7 @@ class Log extends Model
         'track_key'    => 'string',
         'operator'     => 'string',
         'log_content'  => 'string',
+        'log_summary'  => 'string',
         'created_at'   => 'string',
         'created_date' => 'string',
     ];

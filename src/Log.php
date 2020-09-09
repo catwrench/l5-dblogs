@@ -9,7 +9,8 @@ use CatWrench\DbLogs\Model\Log as ModelLog;
  * save log and read log.
  *
  * @method array write($bizTag, $actionTag, array $content, $operator = '', $traceKey = '')
- * @method array read($bizTag, $actionTag = '', $traceKey = '', $operator = '', $pageNum = 1, $pageSize = 15, $asc = true)
+ * @method array read($bizTag, $actionTag = '', $traceKey = '', $operator = '', $pageNum = 1, $pageSize = 15, $asc =
+ *         true)
  * @method array readByTraceKey($traceKey, $pageNum = 1, $pageSize = 15, $asc = true)
  * @method array readByBizTag($bizTag, $pageNum = 1, $pageSize = 20, $asc = true)
  * @method array readByBizTraceKey($bizTag, $traceKey, $pageNum = 1, $pageSize = 20, $asc = true)
@@ -28,17 +29,19 @@ class Log
      * @param string $bizTag
      * @param string $actionTag
      * @param array  $content
+     * @param string $summary
      * @param string $operator
      * @param string $traceKey
      *
      * @return boolean
      */
-    public function write($bizTag, $actionTag, array $content, $operator = '', $traceKey = '')
+    public function write($bizTag, $actionTag, array $content, $summary = '', $operator = '', $traceKey = '')
     {
         $newLog = new ModelLog();
         $newLog->biz_tag = $bizTag;
         $newLog->action_tag = $actionTag;
         $newLog->log_content = json_encode($content);
+        $newLog->log_summary = $summary;
         $newLog->operator = $operator;
         $newLog->track_key = $traceKey;
         $newLog->created_date = date('Y-m-d');
@@ -159,7 +162,7 @@ class Log
      */
     protected function queryLog(array $cond, $pageNum = 1, $pageSize = 20, $asc = true)
     {
-        $list = ModelLog::select(['biz_tag', 'action_tag', 'operator', 'log_content', 'track_key', 'created_at', 'created_date'])
+        $list = ModelLog::select(['biz_tag', 'action_tag', 'operator', 'log_content', 'log_summary', 'track_key', 'created_at', 'created_date'])
             ->where($cond)
             ->orderBy('created_at', $asc ? 'asc' : 'desc')
             ->forPage($pageNum, $pageSize)
