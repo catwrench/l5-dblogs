@@ -34,12 +34,12 @@ $logContent = [
     'package' => 'catwrench/l5-dblogs',
     'date' => date('Y-m-d H:i:s'),
 ];
-$logSummery = 'xxx 在 date 更新了 catwrench/l5-dblogs'
+$logSummary = 'xxx 在 date 更新了 catwrench/l5-dblogs'
 $operator = 'catwrench';
 $traceKey = 'dblogs';
 
 $dblogs = app('dblogs');
-$saveRs = $dblogs->write($bizTag, $actionTag, $logContent, $logSummery, $operator, $traceKey);
+$saveRs = $dblogs->write($bizTag, $actionTag, $logContent, $logSummary, $operator, $traceKey);
 
 ```
 
